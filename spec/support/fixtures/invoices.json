@@ -15,5 +15,53 @@
         "audience": 40
       }
     ]
+  },
+  {
+    "customer": "SillyCo",
+    "performances": [
+      {
+        "playID": "hamlet",
+        "audience": 15
+      },
+      {
+        "playID": "as-like",
+        "audience": 1225
+      }
+    ]
+  },
+  {
+    "customer": "OtherCo",
+    "performances": [
+      {
+        "playID": "hamlet",
+        "audience": 355
+      }
+    ]
+  },
+  {
+    "customer": "AnotherCo",
+    "performances": [
+      {
+        "playID": "hamlet",
+        "audience": 155
+      },
+      {
+        "playID": "as-like",
+        "audience": 135
+      },
+      {
+        "playID": "othello",
+        "audience": 140
+      }
+    ]
+  },
+  {
+    "customer": "FakeCo",
+    "performances": [
+      {
+        "playID": "unknown",
+        "audience": 355
+      }
+    ]
   }
 ]
