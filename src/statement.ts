@@ -24,12 +24,6 @@ function statement (invoice, plays) {
     return result;
   }
 
-  function usd(aNumber: number) {
-    return new Intl.NumberFormat("en-US",
-      { style: "currency", currency: "USD",
-        minimumFractionDigits: 2 }).format(aNumber/100);
-  }
-
   function totalVolumeCredits() {
     let result = 0;
 
@@ -40,6 +34,12 @@ function statement (invoice, plays) {
     return result;
   }
 
+  function usd(aNumber: number) {
+    return new Intl.NumberFormat("en-US",
+      { style: "currency", currency: "USD",
+        minimumFractionDigits: 2 }).format(aNumber/100);
+  }
+
   function volumeCreditsFor(aPerformance: Performance) {
     let result = 0;
 
@@ -47,6 +47,10 @@ function statement (invoice, plays) {
     if ("comedy" === playFor(aPerformance).type) result += Math.floor(aPerformance.audience / 5);
 
     return result;
+  }
+
+  function playFor(aPerformance: Performance) {
+    return plays[aPerformance.playID];
   }
 
   function amountFor(aPerformance: Performance) {
@@ -71,10 +75,6 @@ function statement (invoice, plays) {
     }
 
     return result;
-  }
-
-  function playFor(aPerformance: Performance) {
-    return plays[aPerformance.playID];
   }
 }
 
