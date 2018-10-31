@@ -4,11 +4,13 @@ interface Performance {
 }
 
 function statement (invoice, plays) {
-  return renderPlainText(invoice, plays);
+  const statementData = {};
+  statementData['customer'] = invoice.customer;
+  return renderPlainText(statementData, invoice, plays);
 }
 
-function renderPlainText(invoice, plays) {
-  let result = `Statement for ${invoice.customer}\n`;
+function renderPlainText(data, invoice, plays) {
+  let result = `Statement for ${data.customer}\n`;
 
   for (let perf of invoice.performances) {
     result += `  ${playFor(perf).name}: ${usd(amountFor(perf))} (${perf.audience} seats)\n`;
