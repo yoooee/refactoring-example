@@ -4,6 +4,10 @@ interface Performance {
 }
 
 function statement (invoice, plays) {
+  return renderPlainText(createStatementData(invoice, plays));
+}
+
+function createStatementData (invoice, plays) {
   const statementData = {
     customer: invoice.customer,
     performances: invoice.performances.map(enrichPerformance),
@@ -14,7 +18,7 @@ function statement (invoice, plays) {
   statementData.totalAmount = totalAmount(statementData);
   statementData.totalVolumeCredits = totalVolumeCredits(statementData);
 
-  return renderPlainText(statementData, plays);
+  return statementData;
 
   function enrichPerformance(aPerformance) {
     const result = Object.assign({}, aPerformance);
@@ -70,7 +74,7 @@ function statement (invoice, plays) {
   }
 }
 
-function renderPlainText (data, plays) {
+function renderPlainText (data) {
   let result = `Statement for ${data.customer}\n`;
 
   for (let perf of data.performances) {
