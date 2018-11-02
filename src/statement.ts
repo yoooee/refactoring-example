@@ -6,10 +6,15 @@ interface Performance {
 function statement (invoice, plays) {
   const statementData = {
     customer: invoice.customer,
-    performances: invoice.performances
+    performances: invoice.performances.map(enrichPerformance)
   };
 
   return renderPlainText(statementData, plays);
+
+  function enrichPerformance(aPerformance) {
+    const result = Object.assign({}, aPerformance);
+    return result;
+  }
 }
 
 function renderPlainText (data, plays) {
