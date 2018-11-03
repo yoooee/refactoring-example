@@ -9,10 +9,6 @@ function statement (invoice, plays) {
   return renderPlainText(createStatementData(invoice, plays));
 }
 
-function htmlStatement (invoice, plays) {
-  return renderHtml(createStatementData(invoice, plays));
-}
-
 function renderPlainText (data) {
   let result = `Statement for ${data.customer}\n`;
 
@@ -22,8 +18,12 @@ function renderPlainText (data) {
 
   result += `Amount owed is ${usd(data.totalAmount)}\n`;
   result += `You earned ${data.totalVolumeCredits} credits\n`;
-  return result;
 
+  return result;
+}
+
+function htmlStatement (invoice, plays) {
+  return renderHtml(createStatementData(invoice, plays));
 }
 
 function renderHtml (data) {
