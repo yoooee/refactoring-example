@@ -8,7 +8,7 @@ function createPerformanceCalculator(aPerformance, aPlay) {
 }
 
 class PerformanceCalculator {
-  constructor(private _performance, private _play) { }
+  constructor(protected _performance, protected _play) { }
 
   get play() {
     return this._play;
@@ -19,11 +19,7 @@ class PerformanceCalculator {
 
     switch (this._play.type) {
       case "tragedy":
-        result = 40000;
-        if (this._performance.audience > 30) {
-          result += 1000 * (this._performance.audience - 30);
-        }
-        break;
+        throw 'bad thing';
       case "comedy":
         result = 30000;
         if (this._performance.audience > 20) {
@@ -49,7 +45,15 @@ class PerformanceCalculator {
 }
 
 class TragedyCalculator extends PerformanceCalculator {
+  get amount() {
+    let result = 40000;
 
+    if (this._performance.audience > 30) {
+      result += 1000 * (this._performance.audience - 30);
+    }
+
+    return result;
+  }
 }
 
 class ComedyCalculator extends PerformanceCalculator {
