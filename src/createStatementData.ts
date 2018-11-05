@@ -1,5 +1,8 @@
-export function createStatementData (invoice, plays) {
+class PerformanceCalculator {
+  constructor(private _performance) { }
+}
 
+export function createStatementData (invoice, plays) {
   const result = {
     customer: invoice.customer,
     performances: invoice.performances.map(enrichPerformance),
@@ -13,6 +16,7 @@ export function createStatementData (invoice, plays) {
   return result;
 
   function enrichPerformance(aPerformance) {
+    const calculator = new PerformanceCalculator(aPerformance);
     const result = Object.assign({}, aPerformance);
     result.play = playFor(aPerformance);
     result.amount = amountFor(result);
